@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Timer from "./components/Timer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [endTime, setEndTime] = useState("");
+	return (
+		<div className="App container-sm">
+			<h1 className="text-white bg-dark px-3 py-2">Timer</h1>
+			<h3>Enter the end time: </h3>
+			<input
+				type="number"
+				placeholder="Enter in seconds..."
+				className="mb-5 rounded border-top-0 border-bottom-0"
+        onChange={(e)=>{setEndTime(e.target.value)}}
+			/>
+			<Timer initialTime={0} endTime={endTime} />
+		</div>
+	);
 }
 
 export default App;
